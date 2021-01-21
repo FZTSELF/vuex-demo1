@@ -1,28 +1,36 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <span>小米9</span>
+    数量：{{num}}
+    <br>
+    <button :disabled="num>0?false:true" @click="$store.commit('increment')">购买1个</button>
+    <button :disabled="num>1?false:true" @click="$store.commit('increment2')">购买2个 </button><br>
+
+    <button id="btn" :disabled="num>0?false:true" @click="$store.commit('increment3')">购买</button>
+    <input type="number"  min="1" v-model="$store.state.buy">个
+<!--    {{count}}-->
+<!--    {{$store.getters.doubleCount}}-->
+<!--    <button @click="$store.commit('increment')">count++</button>-->
+<!--    <button @click="$store.dispatch('increment2')">count++</button>-->
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  export default {
+    name: 'App',
+    // computed: {
+    //   count(){
+    //     return this.$store.state.count
+    //   }
+    // }
+    computed: {
+      num(){
+        return this.$store.state.num
+      }
+    }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
